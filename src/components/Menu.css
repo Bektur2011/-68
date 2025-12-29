@@ -1,0 +1,60 @@
+.menu-container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+  width: 300px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+}
+
+.menu-container::before {
+  content: '🎅';
+  font-size: 30px;
+  position: absolute;
+  top: -15px;
+  left: 10px;
+}
+
+.menu-container::after {
+  content: '🔔';
+  font-size: 30px;
+  position: absolute;
+  top: -15px;
+  right: 10px;
+}
+
+.menu-content h1 {
+  color: #2c3e50;
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.menu-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.menu-buttons button {
+  padding: 12px 24px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menu-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}

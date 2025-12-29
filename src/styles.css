@@ -1,0 +1,484 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: white;
+  color: black;
+  min-height: 100vh;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.app {
+  max-width: calc(100% - 60px);
+  margin: 0 auto;
+  padding: 20px;
+  margin-left: 60px; /* Shift content to the right to account for sidebar */
+}
+
+.app h1 {
+  color: white;
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.app h1::before {
+  content: '🎄';
+  font-size: 40px;
+  position: absolute;
+  left: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.app h1::after {
+  content: '❄️';
+  font-size: 40px;
+  position: absolute;
+  right: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+button {
+  border-radius: 10px;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: inherit;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+input {
+  border-radius: 10px;
+  border: 2px solid #3498db;
+  padding: 12px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #e74c3c;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.popup-message {
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+  background-size: 400% 400%;
+  animation: gradientShift 3s ease infinite;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 400px;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+.popup-message h2 {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.popup-message button {
+  background-color: #ff4757;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.popup-message button:hover {
+  background-color: #ff3742;
+}
+
+.menu-container {
+  text-align: center;
+}
+
+.admin-box {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 80%;
+  min-height: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.homework-list {
+  margin-top: 20px;
+}
+
+.homework-list h2 {
+  color: black;
+}
+
+.homework-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.homework-card {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.homework-card h3 {
+  margin-top: 0;
+  color: black;
+}
+
+.homework-card p {
+  margin: 5px 0;
+  color: black;
+}
+
+.admin-box p {
+  margin-top: 10px;
+  font-size: 18px;
+  color: black;
+  padding: 10px;
+  flex-grow: 1;
+}
+
+.admin-input {
+  display: flex;
+  gap: 10px;
+}
+
+.admin-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #3498db;
+}
+
+.admin-input button {
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.homework-form {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 80%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.homework-form h2 {
+  margin-top: 0;
+  color: black;
+}
+
+.homework-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.homework-form input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #3498db;
+}
+
+.homework-form button {
+  align-self: flex-start;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.student-list {
+  margin-top: 20px;
+}
+
+.student-list h2 {
+  color: #4ecdc4;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+.student-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.student-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.student-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.student-card h3 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.student-card p {
+  color: #666;
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+
+.settings {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.settings h2 {
+  color: #4ecdc4;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+.setting-item {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.setting-item label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.setting-item button {
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+/* Dark theme */
+body.dark {
+  background: linear-gradient(135deg, #2c3e50, #34495e, #2c3e50, #34495e, #2c3e50);
+  color: #ecf0f1;
+}
+
+body.dark .app h1 {
+  color: #ecf0f1;
+}
+
+body.dark .homework-card,
+body.dark .student-card,
+body.dark .setting-item,
+body.dark .admin-box,
+body.dark .homework-form {
+  background: rgba(44, 62, 80, 0.9);
+  border: 2px solid #ecf0f1;
+  color: #ecf0f1;
+}
+
+body.dark .homework-card h3,
+body.dark .student-card h3,
+body.dark .setting-item label {
+  color: #ecf0f1;
+}
+
+body.dark .homework-card p,
+body.dark .student-card p {
+  color: #bdc3c7;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .app {
+    max-width: 100%;
+    margin: 0;
+    padding: 10px;
+    margin-left: 0; /* Remove sidebar shift on mobile */
+  }
+
+  .app h1 {
+    font-size: 24px;
+  }
+
+  .app h1::before,
+  .app h1::after {
+    display: none; /* Hide emojis on mobile */
+  }
+
+  .homework-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .homework-card {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .homework-form {
+    width: 95%;
+  }
+
+  .admin-box {
+    width: 95%;
+  }
+
+  .student-cards {
+    grid-template-columns: 1fr;
+    padding: 0 10px;
+  }
+
+  .setting-item {
+    width: 95%;
+  }
+
+  .popup-message {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .popup-message h2 {
+    font-size: 20px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1001;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 60px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .mobile-menu button {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+}
+
+/* Hide mobile menu toggle on desktop */
+@media (min-width: 769px) {
+  .mobile-menu-toggle,
+  .mobile-menu {
+    display: none !important;
+  }
+}
