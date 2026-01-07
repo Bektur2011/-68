@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   // Важно! Замените 'repository-name' на название вашего GitHub репозитория
-  base: process.env.NODE_ENV === 'production' ? '/-44/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/-68/' : '/',
   server: {
     port: 5173,
     proxy: {
