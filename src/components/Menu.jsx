@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
+import API_URL from '../config';
 
-const Menu = ({ user, onLogout, adminMessage, setAdminMessage }) => {
+const Menu = ({ user, onLogout, adminMessage, setAdminMessage, onHomeworkClick }) => {
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:3005/admin-message')
+    fetch(`${API_URL}/admin-message`)
       .then(res => res.json())
       .then(data => setAdminMessage(data.message))
       .catch(err => console.error('Failed to fetch message:', err));
   }, [setAdminMessage]);
 
   const handleSubmit = () => {
-    fetch('http://localhost:3005/admin-message', {
+    fetch(`${API_URL}/admin-message`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: inputValue })

@@ -4,13 +4,19 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/dz-site/',
+  // Важно! Замените 'repository-name' на название вашего GitHub репозитория
+  base: process.env.NODE_ENV === 'production' ? '/-44/' : '/',
   server: {
+    port: 5173,
     proxy: {
       '/api': {
-        target: 'http://localhost:3002',
+        target: 'http://localhost:3005',
         changeOrigin: true,
       },
     },
   },
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+  }
 })

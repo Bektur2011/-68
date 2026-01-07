@@ -4,6 +4,7 @@ const AddHomework = ({ onAdd }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,6 +13,8 @@ const AddHomework = ({ onAdd }) => {
       setTitle('');
       setDescription('');
       setDate('');
+      setMessage('Домашнее задание добавлено!');
+      setTimeout(() => setMessage(''), 3000);
     }
   };
 
@@ -41,6 +44,7 @@ const AddHomework = ({ onAdd }) => {
         />
         <button type="submit">Добавить</button>
       </form>
+      {message && <p className="success-message">{message}</p>}
     </div>
   );
 };

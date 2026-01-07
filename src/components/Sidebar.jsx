@@ -1,7 +1,7 @@
 import React from 'react';
 import './Sidebar.css';
 
-const Sidebar = ({ currentView, onMenuClick, onHomeworkClick }) => {
+const Sidebar = ({ currentView, onMenuClick, onHomeworkClick, onStudentsClick }) => {
   return (
     <div className="sidebar">
       <button
@@ -17,6 +17,13 @@ const Sidebar = ({ currentView, onMenuClick, onHomeworkClick }) => {
         title="Домашние задания"
       >
         📖
+      </button>
+      <button
+        className={`sidebar-button ${currentView === 'students' ? 'active' : ''}`}
+        onClick={onStudentsClick}
+        title="Ученики"
+      >
+        👥
       </button>
     </div>
   );

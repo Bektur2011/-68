@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './styles.css';
 import Login from './components/Login';
 import Menu from './components/Menu';
 import AddHomework from './components/AddHomework';
 import HomeworkList from './components/HomeworkList';
 import Sidebar from './components/Sidebar';
+import StudentList from './components/StudentList';
 import users from './users';
+import API_URL from './config';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -31,7 +33,7 @@ function App() {
 
   const addHomework = (homework) => {
     const newHomework = { ...homework, id: Date.now() };
-    fetch('http://localhost:3005/homeworks', {
+    fetch(`${API_URL}/homeworks`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -46,7 +48,7 @@ function App() {
   };
 
   const deleteHomework = (id) => {
-    fetch(`http://localhost:3005/homeworks/${id}`, {
+    fetch(`${API_URL}/homeworks/${id}`, {
       method: 'DELETE',
     })
       .then(res => res.json())
@@ -70,39 +72,30 @@ function App() {
     setCurrentView('students');
   };
 
-  const switchToSettings = () => {
-    setCurrentView('settings');
-  };
-
   if (!user) {
     return <Login onLogin={handleLogin} />;
   }
 
   return (
     <div className="app">
-      <Sidebar currentView={currentView} onMenuClick={switchToMenu} onHomeworkClick={switchToHomework} />
+      <Sidebar currentView={currentView} onMenuClick={switchToMenu} onHomeworkClick={switchToHomework} onStudentsClick={switchToStudents} />
       <button className="mobile-menu-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>☰</button>
       {mobileMenuOpen && (
         <div className="mobile-menu">
           <button onClick={() => { setCurrentView('menu'); setMobileMenuOpen(false); }}>Меню</button>
           <button onClick={() => { setCurrentView('homework'); setMobileMenuOpen(false); }}>Домашние задания</button>
+          <button onClick={() => { setCurrentView('students'); setMobileMenuOpen(false); }}>Ученики</button>
         </div>
       )}
       <div className="main-content">
         {currentView === 'menu' && (
-          <Menu user={user} onLogout={handleLogout} adminMessage={adminMessage} setAdminMessage={setAdminMessage} />
+          <Menu user={user} onLogout={handleLogout} adminMessage={adminMessage} setAdminMessage={setAdminMessage} onHomeworkClick={switchToHomework} />
         )}
         {currentView === 'homework' && (
           <>
             <AddHomework onAdd={addHomework} />
             <HomeworkList homeworks={homeworks} user={user} onDelete={deleteHomework} />
           </>
-        )}
-        {currentView === 'students' && (
-          <StudentList />
-        )}
-        {currentView === 'settings' && (
-          <Settings />
         )}
       </div>
       {showMessage && (

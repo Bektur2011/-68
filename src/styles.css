@@ -20,7 +20,7 @@ body {
 }
 
 .app h1 {
-  color: white;
+  color: black;
   text-align: center;
   font-size: 32px;
   margin-bottom: 30px;
@@ -54,7 +54,7 @@ button {
   font-weight: 500;
   font-family: inherit;
   background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-  color: white;
+  color: black;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -115,7 +115,7 @@ a:hover {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   text-align: center;
   max-width: 400px;
-  color: white;
+  color: black;
   font-family: 'Arial', sans-serif;
 }
 
@@ -127,7 +127,7 @@ a:hover {
 
 .popup-message button {
   background-color: #ff4757;
-  color: white;
+  color: black;
   border: none;
   padding: 10px 20px;
   border-radius: 10px;
@@ -215,7 +215,7 @@ a:hover {
 .admin-input button {
   padding: 10px 20px;
   background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-  color: white;
+  color: black;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -251,10 +251,16 @@ a:hover {
   align-self: flex-start;
   padding: 10px 20px;
   background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-  color: white;
+  color: black;
   border: none;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 .student-list {
@@ -333,7 +339,7 @@ a:hover {
 .setting-item button {
   padding: 10px 20px;
   background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-  color: white;
+  color: black;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -466,7 +472,7 @@ body.dark .student-card p {
 
   .mobile-menu button {
     background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-    color: white;
+    color: black;
     border: none;
     padding: 10px;
     border-radius: 8px;
